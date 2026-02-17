@@ -4,33 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Samia ❤️</title>
+
 <style>
-body {
+body{
     margin:0;
     padding:0;
-    overflow:hidden;
-    font-family:'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg,#ff4e8a,#8e2de2);
-    height:100vh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
+    height:100vh;
     color:white;
     text-align:center;
 }
-.card {
+
+.card{
     background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(20px);
-    padding:40px;
+    backdrop-filter: blur(15px);
+    padding:35px;
     border-radius:20px;
     box-shadow:0 15px 40px rgba(0,0,0,0.4);
     max-width:500px;
     z-index:2;
-    position:relative;
 }
-h1{font-size:36px; margin-bottom:10px;}
-p{font-size:18px; line-height:1.6; margin:10px 0;}
-button {
+
+h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.6;
+}
+
+button{
     margin-top:15px;
     padding:12px 25px;
     border:none;
@@ -41,70 +51,71 @@ button {
     cursor:pointer;
     transition:0.3s;
 }
-button:hover {
-    background:#ffe6f0;
+
+button:hover{
     transform:scale(1.1);
+    background:#ffe6f0;
 }
-/* Floating hearts */
+
+#loveMessage, #funnyMessage{
+    font-size:20px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+/* Floating Hearts */
 .heart{
     position:absolute;
-    color:white;
-    animation:float 6s linear infinite;
+    font-size:20px;
+    animation: float 6s linear infinite;
     pointer-events:none;
 }
+
 @keyframes float{
-    from{transform:translateY(100vh);}
-    to{transform:translateY(-10vh);}
+    from{ transform:translateY(100vh); }
+    to{ transform:translateY(-10vh); }
 }
-canvas{position:absolute; top:0; left:0; z-index:1;}
-#loveMessage, #funnyMessage{
-    font-weight:bold;
-    margin-top:15px;
-    font-size:20px;
+
+canvas{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
 }
 </style>
 </head>
+
 <body>
 
 <canvas id="fireworks"></canvas>
 
 <div class="card">
     <h1>Happy Birthday, Samia ❤️</h1>
-    <p>You are the love of my life, my peace, and my greatest blessing.</p>
+    <p>You are my happiness, my peace, and my favorite person in the world.</p>
 
-    <button onclick="showLove()">Click for a Romantic Surprise 💌</button>
+    <button onclick="showLove()">Romantic Surprise 💌</button>
     <p id="loveMessage"></p>
 
-    <button onclick="showFunny()">Click for Funny Surprise 😂</button>
+    <button onclick="showFunny()">Funny Surprise 😂</button>
     <p id="funnyMessage"></p>
-
-    <button onclick="playMusic()">Play Birthday Music 🎵</button>
 </div>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-    <source src="https://github.com/huzaifa259/samia-birthday/raw/main/Birthday%20Song!!!%20(1).mp3" type="audio/mpeg">
-</audio>
-
 <script>
-// Romantic surprise
+
+// Romantic text
 function showLove(){
-    document.getElementById("loveMessage").innerHTML = "I love you forever, Samia 💍✨ Happy Birthday, my queen!";
+    document.getElementById("loveMessage").innerHTML =
+    "I love you forever Samia 💖✨ May your smile always shine like today!";
 }
 
-// Funny surprise
+// Funny text
 function showFunny(){
-    document.getElementById("funnyMessage").innerHTML = "🎉 Happy Birthday Moto! 😂🎉";
-}
-
-// Play Music (mobile-friendly)
-function playMusic(){
-    const music=document.getElementById("bgMusic");
-    music.play();
+    document.getElementById("funnyMessage").innerHTML =
+    "🎉 Happy Birthday Moto! 😂🎂";
 }
 
 // Floating hearts
-for(let i=0;i<30;i++){
+for(let i=0;i<25;i++){
     let heart=document.createElement("div");
     heart.innerHTML="❤️";
     heart.className="heart";
@@ -114,15 +125,17 @@ for(let i=0;i<30;i++){
     document.body.appendChild(heart);
 }
 
-// Fireworks
+// Fireworks animation
 const canvas=document.getElementById("fireworks");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
+
 function firework(){
     let x=Math.random()*canvas.width;
     let y=Math.random()*canvas.height/2;
-    for(let i=0;i<30;i++){
+
+    for(let i=0;i<40;i++){
         ctx.beginPath();
         ctx.arc(x,y,2,0,Math.PI*2);
         ctx.fillStyle="white";
@@ -130,6 +143,8 @@ function firework(){
     }
 }
 setInterval(firework,600);
+
 </script>
+
 </body>
-        </html>
+</html>
