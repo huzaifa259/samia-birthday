@@ -28,11 +28,11 @@ body {
     z-index:2;
     position:relative;
 }
-h1{font-size:36px;}
-p{font-size:18px; line-height:1.6;}
+h1{font-size:36px; margin-bottom:10px;}
+p{font-size:18px; line-height:1.6; margin:10px 0;}
 button {
     margin-top:15px;
-    padding:12px 20px;
+    padding:12px 25px;
     border:none;
     border-radius:30px;
     background:white;
@@ -56,60 +56,29 @@ button:hover {
     from{transform:translateY(100vh);}
     to{transform:translateY(-10vh);}
 }
-/* Sparkles for VIP effect */
-.sparkle{
-    position:absolute;
-    width:5px;
-    height:5px;
-    background:white;
-    border-radius:50%;
-    animation:twinkle 1.5s infinite;
-}
-@keyframes twinkle{
-    0%,100%{opacity:0;}
-    50%{opacity:1;}
-}
 canvas{position:absolute; top:0; left:0; z-index:1;}
-img{max-width:80%; border-radius:20px; margin-top:15px;}
 </style>
 </head>
 <body>
 
 <canvas id="fireworks"></canvas>
 
-<div class="card" id="mainCard">
+<div class="card">
     <h1>Happy Birthday, Samia ❤️</h1>
-    <p>Even though you are far away, my heart celebrates you every second. You are my happiness, my peace, and the most beautiful blessing in my life.</p>
-    
+    <p>You are the love of my life, my peace, and my greatest blessing.</p>
     <button onclick="showLove()">Click for a Surprise 💌</button>
-    <p id="loveMessage" style="margin-top:10px; font-weight:bold;"></p>
-    
-    <button onclick="showPhoto()">See Your VIP Photo 📸</button>
-    <div id="photoDiv"></div>
-    
-    <button onclick="playMusic()">Play Romantic Music 🎵</button>
+    <p id="loveMessage" style="margin-top:15px; font-weight:bold;"></p>
 </div>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" autoplay loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Surprise message
+// Surprise message appear
 function showLove(){
-    document.getElementById("loveMessage").innerHTML = "I Love You Forever, Samia 💍✨ You are my queen!";
-}
-
-// VIP photo reveal
-function showPhoto(){
-    const div=document.getElementById("photoDiv");
-    div.innerHTML='<img src="https://i.ibb.co/qB5nD5h/romantic.jpg" alt="Samia VIP">';
-}
-
-// Play Music
-function playMusic(){
-    const music=document.getElementById("bgMusic");
-    music.play();
+    const loveMsg = document.getElementById("loveMessage");
+    loveMsg.innerHTML = "I love you forever, Samia 💍✨ Happy Birthday, my queen!";
 }
 
 // Floating hearts
@@ -123,16 +92,7 @@ for(let i=0;i<30;i++){
     document.body.appendChild(heart);
 }
 
-// Sparkles
-for(let i=0;i<50;i++){
-    let sparkle=document.createElement("div");
-    sparkle.className="sparkle";
-    sparkle.style.left=Math.random()*100+"vw";
-    sparkle.style.top=Math.random()*100+"vh";
-    document.body.appendChild(sparkle);
-}
-
-// Simple fireworks
+// Fireworks
 const canvas=document.getElementById("fireworks");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
