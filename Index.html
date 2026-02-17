@@ -1,58 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Celebration</title>
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
-        h1 { color: #4a90e2; }
-        .quote, .joke { margin: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
-        button { padding: 10px 20px; font-size: 16px; margin: 10px; }
-        .confetti { position: absolute; top: 0; left: 0; right: 0; pointer-events: none; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffbc00, #ff66a3);
+            text-align: center;
+            overflow: hidden;
+        }
+        header {
+            margin: 20px;
+            font-size: 2em;
+            color: white;
+            text-shadow: 2px 2px 5px #000;
+        }
+        button {
+            background-color: #ff007f;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1em;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #ff5e3a;
+        }
+        #loveCounter {
+            font-size: 1.5em;
+            color: red;
+        }
+        .floating-hearts {
+            position: absolute;
+            pointer-events: none;
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+        #photoGallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #photoGallery img {
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
     </style>
-    <script>
-        let birthdaySong;
-        function playSong() {
-            birthdaySong.play();
-        }
-        function pauseSong() {
-            birthdaySong.pause();
-        }
-        function stopSong() {
-            birthdaySong.pause();
-            birthdaySong.currentTime = 0;
-        }  
-        window.onload = () => {
-            birthdaySong = new Audio('happy-birthday.mp3');
-        };
-    </script>
 </head>
 <body>
-    <h1>Happy Birthday!</h1>
-    <button onclick="playSong()">Play Song</button>
-    <button onclick="pauseSong()">Pause Song</button>
-    <button onclick="stopSong()">Stop Song</button>
-
-    <div class="quote">
-        <h2>Romantic Quotes</h2>
-        <p>"You are my sun, my moon, and all my stars." - E.E. Cummings</p>
-        <p>"In all the world, there is no heart for me like yours." - Maya Angelou</p>
+    <header class="animate__animated animate__fadeIn">Happy Birthday to You!</header>
+    <button onclick="playMusic()">Play Birthday Song</button>
+    <button onclick="pauseMusic()">Pause Music</button>
+    <div id="loveCounter">Love Counter: <span id="count">0</span></div>
+    <button onclick="incrementCounter()">Show Love ❤️</button>
+    <div id="photoGallery">
+        <img src="path_to_image_1.jpg" alt="Birthday Image 1">
+        <img src="path_to_image_2.jpg" alt="Birthday Image 2">
+        <img src="path_to_image_3.jpg" alt="Birthday Image 3">
+        <img src="path_to_image_4.jpg" alt="Birthday Image 4">
     </div>
-
-    <div class="joke">
-        <h2>Funny Jokes</h2>
-        <p>"Why did the scarecrow win an award? Because he was outstanding in his field!"</p>
-        <p>"What do you call fake spaghetti? An impasta!"</p>
-    </div>
-
-    <div class="confetti" id="confetti"></div>
+    <audio id="birthdaySong" src="https://cdn.example.com/royalty-free-hindi-birthday-song.mp3" preload="auto"></audio>
     <script>
-        function createConfetti() {
-            const confetti = document.getElementById('confetti');
-            // Code to generate confetti particles
+        let count = 0;
+        function incrementCounter() {
+            count++;
+            document.getElementById('count').innerText = count;
         }
-        createConfetti();
+        function playMusic() {
+            document.getElementById('birthdaySong').play();
+        }
+        function pauseMusic() {
+            document.getElementById('birthdaySong').pause();
+        }
     </script>
+    <div class="floating-hearts">
+        <span style="font-size: 50px;">❤️</span>
+        <span style="font-size: 50px;">❤️</span>
+        <span style="font-size: 50px;">❤️</span>
+    </div>
 </body>
 </html>
