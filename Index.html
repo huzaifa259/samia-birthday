@@ -1,113 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Samia ❤️</title>
-<style>
-body {
-    margin:0;
-    padding:0;
-    overflow:hidden;
-    font-family:'Segoe UI', sans-serif;
-    background: linear-gradient(135deg,#ff4e8a,#8e2de2);
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    text-align:center;
-}
-.card {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(20px);
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.4);
-    max-width:500px;
-    z-index:2;
-    position:relative;
-}
-h1{font-size:36px; margin-bottom:10px;}
-p{font-size:18px; line-height:1.6; margin:10px 0;}
-button {
-    margin-top:15px;
-    padding:12px 25px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    color:#ff4e8a;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-button:hover {
-    background:#ffe6f0;
-    transform:scale(1.1);
-}
-/* Floating hearts */
-.heart{
-    position:absolute;
-    color:white;
-    animation:float 6s linear infinite;
-    pointer-events:none;
-}
-@keyframes float{
-    from{transform:translateY(100vh);}
-    to{transform:translateY(-10vh);}
-}
-canvas{position:absolute; top:0; left:0; z-index:1;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Celebration</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; }
+        h1 { color: #4a90e2; }
+        .quote, .joke { margin: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px; }
+        .confetti { position: absolute; top: 0; left: 0; right: 0; pointer-events: none; }
+    </style>
+    <script>
+        let birthdaySong;
+        function playSong() {
+            birthdaySong.play();
+        }
+        function pauseSong() {
+            birthdaySong.pause();
+        }
+        function stopSong() {
+            birthdaySong.pause();
+            birthdaySong.currentTime = 0;
+        }  
+        window.onload = () => {
+            birthdaySong = new Audio('happy-birthday.mp3');
+        };
+    </script>
 </head>
 <body>
+    <h1>Happy Birthday!</h1>
+    <button onclick="playSong()">Play Song</button>
+    <button onclick="pauseSong()">Pause Song</button>
+    <button onclick="stopSong()">Stop Song</button>
 
-<canvas id="fireworks"></canvas>
+    <div class="quote">
+        <h2>Romantic Quotes</h2>
+        <p>"You are my sun, my moon, and all my stars." - E.E. Cummings</p>
+        <p>"In all the world, there is no heart for me like yours." - Maya Angelou</p>
+    </div>
 
-<div class="card">
-    <h1>Happy Birthday, Samia ❤️</h1>
-    <p>You are the love of my life, my peace, and my greatest blessing.</p>
-    <button onclick="showLove()">Click for a Surprise 💌</button>
-    <p id="loveMessage" style="margin-top:15px; font-weight:bold;"></p>
-</div>
+    <div class="joke">
+        <h2>Funny Jokes</h2>
+        <p>"Why did the scarecrow win an award? Because he was outstanding in his field!"</p>
+        <p>"What do you call fake spaghetti? An impasta!"</p>
+    </div>
 
-<audio id="bgMusic" autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-// Surprise message appear
-function showLove(){
-    const loveMsg = document.getElementById("loveMessage");
-    loveMsg.innerHTML = "I love you forever, Samia 💍✨ Happy Birthday, my queen!";
-}
-
-// Floating hearts
-for(let i=0;i<30;i++){
-    let heart=document.createElement("div");
-    heart.innerHTML="❤️";
-    heart.className="heart";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(15+Math.random()*25)+"px";
-    heart.style.animationDuration=(3+Math.random()*5)+"s";
-    document.body.appendChild(heart);
-}
-
-// Fireworks
-const canvas=document.getElementById("fireworks");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-function firework(){
-    let x=Math.random()*canvas.width;
-    let y=Math.random()*canvas.height/2;
-    for(let i=0;i<30;i++){
-        ctx.beginPath();
-        ctx.arc(x,y,2,0,Math.PI*2);
-        ctx.fillStyle="white";
-        ctx.fill();
-    }
-}
-setInterval(firework,600);
-</script>
+    <div class="confetti" id="confetti"></div>
+    <script>
+        function createConfetti() {
+            const confetti = document.getElementById('confetti');
+            // Code to generate confetti particles
+        }
+        createConfetti();
+    </script>
 </body>
 </html>
