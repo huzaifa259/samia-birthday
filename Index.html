@@ -77,10 +77,14 @@ canvas{position:absolute; top:0; left:0; z-index:1;}
 
     <button onclick="showFunny()">Click for Funny Surprise 😂</button>
     <p id="funnyMessage"></p>
+
+    <button onclick="playMusic()">Play Birthday Music 🎵</button>
 </div>
 
-<!-- Background YouTube Music Embed -->
-<iframe id="ytmusic" width="0" height="0" src="https://www.youtube.com/embed/5u4xTa3LR2U?autoplay=1&loop=1&playlist=5u4xTa3LR2U&controls=0&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 // Romantic surprise
@@ -91,6 +95,12 @@ function showLove(){
 // Funny surprise
 function showFunny(){
     document.getElementById("funnyMessage").innerHTML = "🎉 Happy Birthday Moto! 😂🎉";
+}
+
+// Play Music (mobile-friendly)
+function playMusic(){
+    const music=document.getElementById("bgMusic");
+    music.play();
 }
 
 // Floating hearts
