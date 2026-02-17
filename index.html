@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love ❤️</title>
-
+<title>Happy Birthday Samia ❤️</title>
 <style>
-body{
+body {
     margin:0;
     padding:0;
     overflow:hidden;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI', sans-serif;
     background: linear-gradient(135deg,#ff4e8a,#8e2de2);
     height:100vh;
     display:flex;
@@ -19,8 +18,7 @@ body{
     color:white;
     text-align:center;
 }
-
-.card{
+.card {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(20px);
     padding:40px;
@@ -28,14 +26,13 @@ body{
     box-shadow:0 15px 40px rgba(0,0,0,0.4);
     max-width:500px;
     z-index:2;
+    position:relative;
 }
-
-h1{font-size:32px;}
+h1{font-size:36px;}
 p{font-size:18px; line-height:1.6;}
-
-button{
-    margin-top:20px;
-    padding:12px 25px;
+button {
+    margin-top:15px;
+    padding:12px 20px;
     border:none;
     border-radius:30px;
     background:white;
@@ -44,77 +41,102 @@ button{
     cursor:pointer;
     transition:0.3s;
 }
-
-button:hover{
+button:hover {
     background:#ffe6f0;
     transform:scale(1.1);
 }
-
+/* Floating hearts */
 .heart{
     position:absolute;
     color:white;
     animation:float 6s linear infinite;
+    pointer-events:none;
 }
-
 @keyframes float{
     from{transform:translateY(100vh);}
     to{transform:translateY(-10vh);}
 }
-canvas{
+/* Sparkles for VIP effect */
+.sparkle{
     position:absolute;
-    top:0;
-    left:0;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 1.5s infinite;
 }
+@keyframes twinkle{
+    0%,100%{opacity:0;}
+    50%{opacity:1;}
+}
+canvas{position:absolute; top:0; left:0; z-index:1;}
+img{max-width:80%; border-radius:20px; margin-top:15px;}
 </style>
 </head>
-
 <body>
 
 <canvas id="fireworks"></canvas>
 
-<div class="card">
+<div class="card" id="mainCard">
     <h1>Happy Birthday, Samia ❤️</h1>
-    <p>
-        Even though you are far away today,  
-        my heart celebrates you every second.  
-        You are my happiness, my peace,  
-        and the most beautiful blessing in my life.
-    </p>
-    <p>
-        May Allah bless you with endless joy,  
-        long life, and success in everything you do.
-    </p>
-    <button onclick="showLove()">Click for a Surprise 💖</button>
-    <p id="loveMessage" style="margin-top:15px; font-weight:bold;"></p>
+    <p>Even though you are far away, my heart celebrates you every second. You are my happiness, my peace, and the most beautiful blessing in my life.</p>
+    
+    <button onclick="showLove()">Click for a Surprise 💌</button>
+    <p id="loveMessage" style="margin-top:10px; font-weight:bold;"></p>
+    
+    <button onclick="showPhoto()">See Your VIP Photo 📸</button>
+    <div id="photoDiv"></div>
+    
+    <button onclick="playMusic()">Play Romantic Music 🎵</button>
 </div>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+// Surprise message
 function showLove(){
-    document.getElementById("loveMessage").innerHTML = 
-    "I Love You Forever, Samia 💍✨";
+    document.getElementById("loveMessage").innerHTML = "I Love You Forever, Samia 💍✨ You are my queen!";
 }
 
-/* Floating Hearts */
-for(let i=0;i<20;i++){
+// VIP photo reveal
+function showPhoto(){
+    const div=document.getElementById("photoDiv");
+    div.innerHTML='<img src="https://i.ibb.co/qB5nD5h/romantic.jpg" alt="Samia VIP">';
+}
+
+// Play Music
+function playMusic(){
+    const music=document.getElementById("bgMusic");
+    music.play();
+}
+
+// Floating hearts
+for(let i=0;i<30;i++){
     let heart=document.createElement("div");
     heart.innerHTML="❤️";
     heart.className="heart";
     heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(20+Math.random()*30)+"px";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
     heart.style.animationDuration=(3+Math.random()*5)+"s";
     document.body.appendChild(heart);
 }
 
-/* Simple Fireworks */
+// Sparkles
+for(let i=0;i<50;i++){
+    let sparkle=document.createElement("div");
+    sparkle.className="sparkle";
+    sparkle.style.left=Math.random()*100+"vw";
+    sparkle.style.top=Math.random()*100+"vh";
+    document.body.appendChild(sparkle);
+}
+
+// Simple fireworks
 const canvas=document.getElementById("fireworks");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
-
 function firework(){
     let x=Math.random()*canvas.width;
     let y=Math.random()*canvas.height/2;
@@ -125,8 +147,7 @@ function firework(){
         ctx.fill();
     }
 }
-setInterval(firework,800);
+setInterval(firework,600);
 </script>
-
 </body>
 </html>
